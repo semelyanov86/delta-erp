@@ -10,15 +10,21 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "spatie/laravel-ray": "^1.17"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "overtrue/phplint": "^2.3",
+        "phpunit/phpunit": "^9.3.3",
+        "psalm/plugin-laravel": "^1.4",
+        "squizlabs/php_codesniffer": "^3.6",
+        "vimeo/psalm": "^4.7"
     },
     "autoload": {
         "psr-4": {
@@ -33,6 +39,11 @@
         }
     },
     "scripts": {
+        "phpcs": "./vendor/bin/phpcs --standard=phpcs.xml --extensions=php -s",
+        "phpcbf": "./vendor/bin/phpcbf --standard=phpcs.xml --extensions=php",
+        "psalm": "./vendor/bin/psalm --config=psalm.xml --no-cache --php-version=8.0",
+        "test": "./vendor/bin/phpunit --colors=always",
+        "lint": "vendor/bin/phplint --no-cache",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
